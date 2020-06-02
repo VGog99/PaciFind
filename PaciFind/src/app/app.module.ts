@@ -13,13 +13,15 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        CoreModule
     ],
     declarations: [
         AppComponent,
@@ -31,8 +33,6 @@ import { AlertComponent } from './_components';
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
         fakeBackendProvider
     ],
     bootstrap: [AppComponent]
