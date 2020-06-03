@@ -4,5 +4,7 @@
     password: string;
     firstName: string;
     lastName: string;
+    description:string;
+    speciality:string;
     token: string;
 }

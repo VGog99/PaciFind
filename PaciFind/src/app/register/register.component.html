@@ -1,32 +1,46 @@
 ﻿<h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">Prenume</label>
         <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            <div *ngIf="f.firstName.errors.required">Prenumele este obligatoriu</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Nume</label>
         <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            <div *ngIf="f.lastName.errors.required">Numele este obligatoriu</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="speciality">Specializare</label>
+        <input type="text" formControlName="speciality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.speciality.errors }" />
+        <div *ngIf="submitted && f.speciality.errors" class="invalid-feedback">
+            <div *ngIf="f.speciality.errors.required">Specializarea este obligatorie</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Descriere</label>
+        <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Specializarea este obligatorie</div>
         </div>
     </div>
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.required">Username-ul este obligatoriu</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Parola</label>
         <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.required">Parola este obligatorie</div>
+            <div *ngIf="f.password.errors.minlength">Parola trebuie sa fie de minim 6 caractere</div>
         </div>
     </div>
     <div class="form-group">
