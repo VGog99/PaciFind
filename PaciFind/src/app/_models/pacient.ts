@@ -1,10 +1,8 @@
-﻿export class User {
+export class Pacient {
     id: number;
-    username: string;
-    password: string;
     firstName: string;
     lastName: string;
     description:string;
-    speciality:string;
+    alergy:string;
     token: string;
 }

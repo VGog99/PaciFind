@@ -5,7 +5,7 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
-
+let pacients=JSON.parse(localStorage.getItem('pacients')) || [];
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -14,7 +14,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // wrap in delayed observable to simulate server api call
         return of(null)
             .pipe(mergeMap(handleRoute))
-            .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+            .pipe(materialize())
             .pipe(delay(500))
             .pipe(dematerialize());
 
@@ -47,7 +47,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 speciality:user.speciality,
                 description:user.description,
                 lastName: user.lastName,
-                pacients:user.pacients,
                 token: 'fake-jwt-token'
             })
         }
@@ -66,6 +65,28 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok();
         }
 
+        function getPacients() {
+            if (!isLoggedIn()) return unauthorized();
+            return ok(pacients);
+        }
+
+        function deletePacient() {
+            if (!isLoggedIn()) return unauthorized();
+
+            pacients = pacients.filter(x => x.id !== idFromUrl());
+            localStorage.setItem('pacients', JSON.stringify(pacients));
+            return ok();
+        }
+        function add() {
+            const pacient = body
+
+            pacient.id = pacient.length ? Math.max(...pacients.map(x => x.id)) + 1 : 1;
+            pacients.push(pacient);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            return ok();
+        }
+
         function getUsers() {
             if (!isLoggedIn()) return unauthorized();
             return ok(users);
@@ -78,7 +99,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             localStorage.setItem('users', JSON.stringify(users));
             return ok();
         }
-
         // helper functions
 
         function ok(body?) {

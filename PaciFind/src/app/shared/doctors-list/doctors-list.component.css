@@ -61,3 +61,6 @@
     .list-type3 a:hover:before{
     border-color:transparent #0089e0 transparent transparent;
     }
+    ol{
+        display:inline-grid
+    }
