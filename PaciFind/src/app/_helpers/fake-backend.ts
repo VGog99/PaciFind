@@ -85,7 +85,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const pacient = body
             pacient.id = pacient.length ? Math.max(...pacients.map(x => x.id)) + 1 : 1;
             pacients.push(pacient);
-            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('pacients', JSON.stringify(pacients));
             return ok();
         }
 

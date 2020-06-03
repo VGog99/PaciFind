@@ -29,17 +29,15 @@ export class PacientsAddComponent implements OnInit {
   });
   }
   get f() { return this.addForm.controls; }
+
   onSubmit() {
     this.submitted = true;
-
     // reset alerts on submit
     this.alertService.clear();
-
     // stop here if form is invalid
     if (this.addForm.invalid) {
         return;
     }
-
     this.loading = true;
     this.pacientService.add(this.addForm.value)
         .pipe(first())
