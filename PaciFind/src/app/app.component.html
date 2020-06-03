@@ -1,9 +1,12 @@
 ﻿<!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/contact-page">Contact</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    <div id="cssmenu">
+        <ul>
+        <li><a routerLink='/'><img name="menu-icon" src="../../../favicon.ico" style="width:45px;height:45px;" ></a></li>
+        <li><a routerLink="">Profil</a></li> 
+         <li><a routerLink='/contact-page'>Contact</a></li>
+         <li><a (click)="logout()">Logout</a></li>
+        </ul>
     </div>
 </nav>
 
