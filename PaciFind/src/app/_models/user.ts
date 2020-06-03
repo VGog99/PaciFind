@@ -5,6 +5,7 @@
     firstName: string;
     lastName: string;
     description:string;
+    pacients:string[];
     speciality:string;
     token: string;
 }
