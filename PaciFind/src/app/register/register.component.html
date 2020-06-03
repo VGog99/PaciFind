@@ -1,5 +1,6 @@
-﻿<h2>Register</h2>
+﻿<div class="container"><h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+   
     <div class="form-group">
         <label for="firstName">Prenume</label>
         <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -50,4 +51,5 @@
         </button>
         <a routerLink="/login" class="btn btn-link">Cancel</a>
     </div>
-</form>
+    
+</form></div>
