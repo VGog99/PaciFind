@@ -19,6 +19,15 @@ const routes: Routes = [
       path:'doctors-page',
       loadChildren:() => import ('./all-doctors-page/all-doctors-page.module').then(module => module.AllDoctorsPageModule)
     },
+    {
+      path:'pacients-page',
+      loadChildren:() => import ('./pacients-page/pacients-page.module').then(module => module.PacientsPageModule)
+    },
+    
+    {
+      path:'pacients-add',
+      loadChildren:() => import ('./pacients-add/pacients-add.module').then(module => module.PacientsAddModule)
+    },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

@@ -12,7 +12,7 @@ export class PacientService {
     }
 
     add(pacient: Pacient) {
-        return this.http.post(`${environment.apiUrl}/pacient/register`, pacient);
+        return this.http.post(`${environment.apiUrl}/pacient/add`, pacient);
     }
 
     delete(id: number) {

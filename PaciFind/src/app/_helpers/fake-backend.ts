@@ -3,7 +3,6 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-// array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
 let pacients=JSON.parse(localStorage.getItem('pacients')) || [];
 @Injectable()
@@ -28,6 +27,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUsers();
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser();
+                case url.endsWith('/pacients/add') && method === 'POST':
+                    return add();
+                case url.endsWith('/pacients') && method === 'GET':
+                    return getPacients();
+                case url.match(/\/pacients\/\d+$/) && method === 'DELETE':
+                    return deletePacient();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -35,7 +40,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         // route functions
-
         function authenticate() {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
@@ -79,11 +83,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
         function add() {
             const pacient = body
-
             pacient.id = pacient.length ? Math.max(...pacients.map(x => x.id)) + 1 : 1;
             pacients.push(pacient);
             localStorage.setItem('users', JSON.stringify(users));
-
             return ok();
         }
 

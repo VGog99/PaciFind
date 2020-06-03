@@ -7,9 +7,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PacientsListComponent } from './pacients-list/pacients-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DoctorsListComponent } from './doctors-list/doctors-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     SidebarComponent, 
@@ -22,6 +22,8 @@ import { DoctorsListComponent } from './doctors-list/doctors-list.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports:[
     ContactContainerComponent,
