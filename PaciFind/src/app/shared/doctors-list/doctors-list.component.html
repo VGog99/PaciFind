@@ -1,5 +1,9 @@
-<ul>
-    <li *ngFor="let user of users">
-        {{user.firstName}} {{user.lastName}}
-    </li>
-</ul>
+  <div class="list-type3">
+    <ol>
+        <li *ngFor="let user of users"><a>
+            {{user.firstName}} {{user.lastName}}
+            {{user.speciality}}
+        </a>
+        </li>
+    </ol>
+    </div>
